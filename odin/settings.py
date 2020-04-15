@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
@@ -130,4 +129,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 SITE_ID = 1 # needed to be set for Allauth to work for some reason
+
+# All Auth settings
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 # 1 day in seconds
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/accounts/email/' # default to /accounts/profile
+
